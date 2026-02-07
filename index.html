@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sahil Patel | Data Scientist</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-main: #020617;
+      --bg-grad-1: #020617;
+      --bg-grad-2: #0f172a;
+      --card-bg: rgba(255, 255, 255, 0.06);
+      --border: rgba(255, 255, 255, 0.12);
+      --text-main: #e5e7eb;
+      --text-muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-2: #818cf8;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: radial-gradient(1200px 600px at 10% -10%, rgba(56,189,248,0.15), transparent 40%),
+                  radial-gradient(800px 500px at 90% 10%, rgba(129,140,248,0.15), transparent 40%),
+                  linear-gradient(180deg, var(--bg-grad-1), var(--bg-grad-2));
+      color: var(--text-main);
+      line-height: 1.65;
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    /* NAVBAR */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(14px);
+      background: rgba(2, 6, 23, 0.7);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-container {
+      max-width: 1150px;
+      margin: auto;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-container strong {
+      font-weight: 700;
+      letter-spacing: 0.3px;
+    }
+
+    .nav-links a {
+      margin-left: 1.8rem;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover { color: var(--text-main); }
+    .nav-links a:hover::after { width: 100%; }
+
+    /* HERO */
+    header {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 4rem 2rem;
+    }
+
+    .hero {
+      max-width: 1000px;
+      display: grid;
+      grid-template-columns: 1fr 2.2fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .hero img {
+      width: 220px;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 24px;
+      border: 1px solid var(--border);
+      box-shadow: 0 30px 80px rgba(0,0,0,0.6);
+    }
+
+    .hero h1 {
+      font-size: 3.2rem;
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 1.2rem;
+    }
+
+    .hero span {
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero p {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      max-width: 720px;
+    }
+
+    .socials {
+      margin-top: 1.8rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .socials a {
+      font-size: 0.85rem;
+      padding: 0.5rem 1.1rem;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.03);
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .socials a:hover {
+      transform: translateY(-2px);
+      background: rgba(56,189,248,0.12);
+    }
+
+    section {
+      padding: 6rem 2rem;
+      max-width: 1150px;
+      margin: auto;
+    }
+
+    section h2 {
+      font-size: 2.2rem;
+      margin-bottom: 3rem;
+      font-weight: 700;
+    }
+
+    /* CARDS */
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2.2rem;
+      backdrop-filter: blur(10px);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 30px 60px rgba(0,0,0,0.45);
+    }
+
+    .card h3 { margin-bottom: 1rem; }
+    .card p, .card li { color: var(--text-muted); font-size: 0.95rem; }
+
+    /* ABOUT */
+    .about {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2.5rem;
+    }
+
+    ul { list-style: none; }
+    ul li::before {
+      content: "▹";
+      color: var(--accent);
+      margin-right: 0.6rem;
+    }
+
+    /* PROJECTS */
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2.5rem;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+
+    .tag {
+      font-size: 0.75rem;
+      padding: 0.3rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      color: var(--accent);
+    }
+
+    /* CONTACT */
+    #contact .card { text-align: center; }
+
+    footer {
+      text-align: center;
+      padding: 3rem 2rem;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; text-align: center; }
+      .hero img { margin: auto; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-container">
+      <strong>Sahil Patel</strong>
+      <div class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#background">Background</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <header id="home">
+    <div class="hero">
+      <img src="https://drive.google.com/uc?export=view&id=1-CHVAtLzyTust0eT_2pwzu7FT7PpqSqC" alt="Sahil Patel" />
+      <div>
+        <h1>Hi, I'm <span>Sahil Patel</span></h1>
+        <p>
+          Data Scientist in training with a <strong>strong mathematical and engineering foundation</strong>.
+          Currently pursuing an <strong>MSc in Data Science at the University of Hertfordshire (started Jan 2026)</strong>.
+          Comfortable across statistics, machine learning, deep learning, and production‑oriented data workflows.
+        </p>
+        <div class="socials">
+          <a href="https://github.com/Sip4818" target="_blank">GitHub</a>
+          <a href="https://www.linkedin.com/in/s-i-patel" target="_blank">LinkedIn</a>
+          <a href="https://leetcode.com/u/yjv4WtAa9V/" target="_blank">LeetCode</a>
+          <a href="https://www.kaggle.com/sahil4818" target="_blank">Kaggle</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section id="background">
+    <h2>Background</h2>
+    <div class="about">
+      <div class="card">
+        <h3>Education</h3>
+        <ul>
+          <li>MSc Data Science — University of Hertfordshire (Jan 2026 – Present)</li>
+          <li>B.Tech Chemical Engineering</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Mathematics & Foundations</h3>
+        <ul>
+          <li>Statistics & Probability</li>
+          <li>Linear Algebra & Calculus</li>
+          <li>Optimization & analytical thinking</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <h2>Skills</h2>
+    <div class="projects">
+      <div class="card">
+        <h3>Programming & Data</h3>
+        <ul>
+          <li>Python (advanced), pandas, NumPy</li>
+          <li>matplotlib, seaborn</li>
+          <li>SQL (advanced querying & optimization)</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Machine Learning & Deep Learning</h3>
+        <ul>
+          <li>Classical ML algorithms</li>
+          <li>PyTorch</li>
+          <li>Model evaluation & validation</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>MLOps & Cloud</h3>
+        <ul>
+          <li>Git & GitHub</li>
+          <li>DVC</li>
+          <li>Google Cloud Storage (GCS)</li>
+          <li>Learning AWS</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="projects">
+
+      <div class="card">
+        <h3>AITextGuard — AI‑Generated Text Detection</h3>
+        <p>
+          End‑to‑end NLP system to detect AI‑generated text using a <strong>production‑style ML + MLOps pipeline</strong>.
+          Built with schema‑validated data ingestion, transformer‑based embeddings, stacked ensemble learning,
+          and automated experiment tracking. The system supports reproducible training, API‑based inference,
+          and containerized deployment.
+        </p>
+        <div class="tags">
+          <span class="tag">NLP</span>
+          <span class="tag">Machine Learning</span>
+          <span class="tag">Deep Learning</span>
+          <span class="tag">MLOps</span>
+          <span class="tag">Docker</span>
+        </div>
+        <p style="margin-top:1rem;">
+          <a href="https://github.com/Sip4818/AICheatTextGuard" target="_blank">GitHub ↗</a> ·
+          <a href="https://huggingface.co/spaces/Sahil4818/ai-text-guard" target="_blank">Live Demo ↗</a>
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Network Security — Phishing URL Detection</h3>
+        <p>
+          End‑to‑end <strong>network security machine learning system</strong> for detecting phishing URLs.
+          Built as a fully automated MLOps pipeline covering ETL from MongoDB, schema validation,
+          feature transformation, model training, experiment tracking, and cloud deployment.
+          Designed for reproducibility, scalability, and real‑world serving.
+        </p>
+        <div class="tags">
+          <span class="tag">Machine Learning</span>
+          <span class="tag">MLOps</span>
+          <span class="tag">AWS</span>
+          <span class="tag">FastAPI</span>
+          <span class="tag">CI/CD</span>
+        </div>
+        <p style="margin-top:1rem;">
+          <a href="https://github.com/Sip4818/NetworkSecurityMlopsProject" target="_blank">GitHub ↗</a>
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>House Market Analytics — Power BI</h3>
+        <p>
+          Interactive <strong>Power BI analytics report</strong> analyzing ~100,000 housing transactions from Denmark.
+          The project explores sales trends, pricing dynamics, property types, and regional performance using
+          advanced DAX measures, time‑intelligence functions, and AI‑driven visuals.
+        </p>
+        <div class="tags">
+          <span class="tag">Power BI</span>
+          <span class="tag">Data Analytics</span>
+          <span class="tag">DAX</span>
+          <span class="tag">BigQuery</span>
+          <span class="tag">Business Intelligence</span>
+        </div>
+        <p style="margin-top:1rem;">
+          <a href="https://github.com/Sip4818/Housing-Date-PowerBi-report" target="_blank">GitHub ↗</a>
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Loan Default Risk Analysis — Power BI</h3>
+        <p>
+          Comprehensive <strong>credit risk analytics dashboard</strong> analyzing over <strong>255,000 loan records</strong>
+          to identify default drivers across demographics, income, credit score, employment type, and time.
+          Built with a full BI pipeline from Excel and SQL Server to Power BI Service, leveraging advanced DAX
+          calculations and time‑intelligence for risk monitoring.
+        </p>
+        <div class="tags">
+          <span class="tag">Power BI</span>
+          <span class="tag">Risk Analytics</span>
+          <span class="tag">DAX</span>
+          <span class="tag">SQL Server</span>
+          <span class="tag">Business Intelligence</span>
+        </div>
+        <p style="margin-top:1rem;">
+          <a href="https://github.com/Sip4818/Loan-Default-PowerBi-Report" target="_blank">GitHub ↗</a>
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <div class="card">
+      <p>Let’s connect:</p>
+      <p>
+        <a href="https://www.linkedin.com/in/s-i-patel" target="_blank">LinkedIn</a> ·
+        <a href="https://github.com/Sip4818" target="_blank">GitHub</a>
+      </p>
+    </div>
+  </section>
+
+  <footer>© 2026 Sahil Patel · Data Science Portfolio</footer>
+
+</body>
+</html>
